@@ -82,11 +82,11 @@ configmapReload:
     ## Additional configmap-reload mounts
     ##
     extraConfigmapMounts: []
-      # - name: prometheus-alerts
-      #   mountPath: /etc/alerts.d
-      #   subPath: ""
-      #   configMap: prometheus-alerts
-      #   readOnly: true
+      - name: prometheus-rules
+        mountPath: /etc/config/alerts
+        subPath: ""
+        configMap: {{ template "prometheus.server.fullname" . }}-rules
+        readOnly: true
 
     ## Security context to be added to configmap-reload container
     containerSecurityContext: {}
@@ -335,11 +335,11 @@ server:
     #   readOnly: true
 
   extraConfigmapMounts: []
-    # - name: certs-configmap
-    #   mountPath: /prometheus
-    #   subPath: ""
-    #   configMap: certs-configmap
-    #   readOnly: true
+      - name: prometheus-rules
+        mountPath: /etc/config/alerts
+        subPath: ""
+        configMap: {{ template "prometheus.server.fullname" . }}-rules
+        readOnly: true
 
   ## Additional Prometheus server Secret mounts
   # Defines additional mounts with secrets. Secrets must be manually created in the namespace.
