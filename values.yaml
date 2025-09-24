@@ -239,7 +239,7 @@ server:
   global:
     ## How frequently to scrape targets by default
     ##
-    scrape_interval: 15s
+    scrape_interval: 30s
     ## How long until a scrape request times out
     ##
     #scrape_timeout: 10s
@@ -740,7 +740,7 @@ serverRules:
     groups:
     - name: demo.rules
       rules:
-      - alert: AlwaysFiring
+      - alert: AlwaysFiringf
         expr: vector(1)
         for: 0s
         labels:
