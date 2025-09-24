@@ -335,11 +335,11 @@ server:
     #   readOnly: true
 
   extraConfigmapMounts:
-      - name: prometheus-rules
-        mountPath: /etc/config/alerts
-        subPath: ""
-        configMap: prom-prometheus-server-rules
-        readOnly: true
+    - name: prometheus-rules
+      mountPath: /etc/config/alerts
+      subPath: ""
+      configMap: prom-prometheus-server-rules
+      readOnly: true
 
   ## Additional Prometheus server Secret mounts
   # Defines additional mounts with secrets. Secrets must be manually created in the namespace.
