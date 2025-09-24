@@ -813,7 +813,18 @@ scrapeConfigFiles: []
 serverFiles:
   ## Alerts configuration
   ## Ref: https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/
-  alerting_rules.yml: {}
+  alerting_rules.yml:
+    groups:
+    - name: demo.rules
+      rules:
+      - alert: AlwaysFiring
+        expr: vector(1)
+        for: 0s
+        labels:
+          severity: critical
+        annotations:
+          summary: "This alert always fires (demo)"
+          description: "Use this to demo alert FIRING state."
   # groups:
   #   - name: Instances
   #     rules:
