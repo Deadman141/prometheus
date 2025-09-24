@@ -778,7 +778,7 @@ server:
     ## service to connect to a specific replica to have a consistent view
     ## of the data.
     statefulsetReplica:
-      enabled: false
+      enabled: true
       replica: 0
 
     ## Additional port to define in the Service
