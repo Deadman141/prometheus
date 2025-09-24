@@ -1,0 +1,19 @@
+{{- if .Values.serverRules.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+{{- with .Values.server.configMapAnnotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+{{- end }}
+  labels:
+    {{- include "prometheus.server.labels" . | nindent 4 }}
+    {{- with .Values.server.extraConfigmapLabels }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
+  name: {{ template "prometheus.server.fullname" . }}-rules
+  namespace: {{ include "prometheus.namespace" . }}
+data:
+  config-rules.yaml: |
+{{ toYaml .Values.serverRules.rules | indent 4 }}
+{{- end }}
