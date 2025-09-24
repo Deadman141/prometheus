@@ -851,11 +851,11 @@ serverFiles:
 
   prometheus.yml:
     rule_files:
-      - /etc/config/recording_rules.yml
-      - /etc/config/alerting_rules.yml
+  ##    - /etc/config/recording_rules.yml
+  ##    - /etc/config/alerting_rules.yml
     ## Below two files are DEPRECATED will be removed from this default values file
-      - /etc/config/rules
-      - /etc/config/alerts
+  ##    - /etc/config/rules
+      - /etc/config/alerts/*.yaml
       
     scrape_configs:
       - job_name: prometheus
