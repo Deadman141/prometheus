@@ -81,7 +81,7 @@ configmapReload:
 
     ## Additional configmap-reload mounts
     ##
-    extraConfigmapMounts: []
+    extraConfigmapMounts:
       - name: prometheus-rules
         mountPath: /etc/config/alerts
         subPath: ""
@@ -334,7 +334,7 @@ server:
     #   hostPath: /etc/kubernetes/certs
     #   readOnly: true
 
-  extraConfigmapMounts: []
+  extraConfigmapMounts:
       - name: prometheus-rules
         mountPath: /etc/config/alerts
         subPath: ""
