@@ -85,7 +85,7 @@ configmapReload:
       - name: prometheus-rules
         mountPath: /etc/config/alerts
         subPath: ""
-        configMap: {{ template "prometheus.server.fullname" . }}-rules
+        configMap: prom-prometheus-rules
         readOnly: true
 
     ## Security context to be added to configmap-reload container
@@ -338,7 +338,7 @@ server:
       - name: prometheus-rules
         mountPath: /etc/config/alerts
         subPath: ""
-        configMap: {{ template "prometheus.server.fullname" . }}-rules
+        configMap: prom-prometheus-rules
         readOnly: true
 
   ## Additional Prometheus server Secret mounts
