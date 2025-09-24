@@ -1,11 +1,21 @@
 {{- if and .Values.rbac.create (empty .Values.server.useExistingClusterRoleName) -}}
-apiVersion: rbac.authorization.k8s.io/v1
+apiVersion: {{ template "rbac.apiVersion" . }}
 kind: ClusterRole
 metadata:
   labels:
     {{- include "prometheus.server.labels" . | nindent 4 }}
   name: {{ include "prometheus.clusterRoleName" . }}
 rules:
+{{- if and .Values.podSecurityPolicy.enabled (.Capabilities.APIVersions.Has "policy/v1beta1/PodSecurityPolicy") }}
+  - apiGroups:
+    - extensions
+    resources:
+    - podsecuritypolicies
+    verbs:
+    - use
+    resourceNames:
+    - {{ template "prometheus.server.fullname" . }}
+{{- end }}
   - apiGroups:
       - ""
     resources:
@@ -22,6 +32,7 @@ rules:
       - list
       - watch
   - apiGroups:
+      - "extensions"
       - "networking.k8s.io"
     resources:
       - ingresses/status

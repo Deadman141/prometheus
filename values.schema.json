@@ -123,6 +123,14 @@
                 }
             }
         },
+        "podSecurityPolicy": {
+            "type": "object",
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                }
+            }
+        },
         "prometheus-node-exporter": {
             "type": "object",
             "properties": {
@@ -262,9 +270,6 @@
                 },
                 "extraVolumes": {
                     "type": "array"
-                },
-                "fullnameOverride": {
-                    "type": "string"
                 },
                 "global": {
                     "type": "object",
@@ -416,6 +421,14 @@
                 "podLabels": {
                     "type": "object"
                 },
+                "podSecurityPolicy": {
+                    "type": "object",
+                    "properties": {
+                        "annotations": {
+                            "type": "object"
+                        }
+                    }
+                },
                 "portName": {
                     "type": "string"
                 },
@@ -423,9 +436,6 @@
                     "type": "string"
                 },
                 "priorityClassName": {
-                    "type": "string"
-                },
-                "runtimeClassName": {
                     "type": "string"
                 },
                 "probeHeaders": {

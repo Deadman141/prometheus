@@ -29,10 +29,8 @@ spec:
         annotations:
           {{- toYaml . | nindent 10 }}
         {{- end }}
-        {{- with .Values.persistentVolumeLabels }}
         labels:
-          {{- toYaml . | nindent 10 }}
-        {{- end }}
+          {{- include "prometheus-pushgateway.defaultLabels" . | nindent 10 }}
         name: storage-volume
       spec:
         accessModes:
