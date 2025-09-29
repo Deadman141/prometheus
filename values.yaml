@@ -744,7 +744,7 @@ serverRules:
         expr: vector(1)
         for: 0s
         labels:
-          severity: critical
+          severity: warning
         annotations:
           summary: "This alert always fires (demo)"
           description: "Use this to demo alert FIRING state."
