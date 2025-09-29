@@ -84,7 +84,7 @@ configmapReload:
     ##
     extraConfigmapMounts: 
       - name: prometheus-server-rules
-        mountPath: /etc/config/alerts-test
+        mountPath: /etc/config/alerts
         subPath: ""
         configMap: prometheus-server-rules
         readOnly: true
